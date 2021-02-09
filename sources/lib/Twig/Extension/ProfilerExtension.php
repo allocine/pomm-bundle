@@ -54,7 +54,7 @@ class ProfilerExtension extends \Twig\Extension\AbstractExtension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('sql_format', function ($sql) {
+            new \Twig\TwigFilter('sql_format', function ($sql) {
                 return \SqlFormatter::format($sql);
             }),
         ];
