@@ -8,7 +8,6 @@
  * file that was distributed with this source code.
  */
 namespace PommProject\PommBundle\Twig\Extension;
-
 /**
  * ProfilerExtension
  *
@@ -20,7 +19,7 @@ namespace PommProject\PommBundle\Twig\Extension;
  * @license X11 {@link http://opensource.org/licenses/mit-license.php}
  * @see \Twig_Extension
  */
-class ProfilerExtension extends \Twig_Extension
+class ProfilerExtension extends \Twig\Extension\AbstractExtension
 {
     /**
      * __construct
@@ -28,13 +27,12 @@ class ProfilerExtension extends \Twig_Extension
      * Extension constructor.
      *
      * @access public
-     * @param  \Twig_Loader_Filesystem $loader
+     * @param  \Twig\Loader\FilesystemLoader $loader
      */
-    public function __construct(\Twig_Loader_Filesystem $loader)
+    public function __construct(\Twig\Loader\FilesystemLoader $loader)
     {
         $loader->addPath($this->getTemplateDirectory(), 'Pomm');
     }
-
     /**
      * getTemplateDirectory
      *
@@ -46,10 +44,8 @@ class ProfilerExtension extends \Twig_Extension
     private function getTemplateDirectory()
     {
         $r = new \ReflectionClass('PommProject\\SymfonyBridge\\DatabaseDataCollector');
-
         return dirname(dirname(dirname($r->getFileName()))).'/views';
     }
-
     /**
      * getFilters
      *
@@ -63,7 +59,6 @@ class ProfilerExtension extends \Twig_Extension
             }),
         ];
     }
-
     /**
      * getName
      *
